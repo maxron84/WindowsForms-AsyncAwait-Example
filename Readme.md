@@ -3,5 +3,3 @@ This example is meant for educational purposes, description is to be found in so
 
 To view the Form1-Class the ClassDiagram1.cd (Classdiagram) file in Visual Studio you need an extension which, for whatever reason, is not included in standard installations (at least in VS 2019).
 Please refer to: https://docs.microsoft.com/en-us/visualstudio/ide/class-designer/how-to-add-class-diagrams-to-projects?view=vs-2022
-
-If you want to just read the source and run the Program without VS or other IDE I created a debug exectuable to be found in .\bin\Debug\
