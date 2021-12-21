@@ -36,10 +36,10 @@ namespace WinForms_AsyncOps_Example
         }
 
         /// <summary>
-        /// Executes the LongRunning Task and manipulates the Controls of the Form (non atomic method).
+        /// Executes the LongRunning Task in an asynchronous manner and manipulates the Controls of the Form (non atomic method).
         /// </summary>
         /// <returns>A Task which is OK to be just discarded in the calling method as long as everything runs fine.</returns>
-        private async Task LongRunningAsync()
+        private async Task LongRunningAsync() // Marked async to tell the compiler we are awaiting something in this method
         {
             if (Regex.IsMatch(txtInput.Text, @"^[0-9]+$")) // Check if input is only digits using Regular Expression
             {
@@ -52,7 +52,7 @@ namespace WinForms_AsyncOps_Example
 
                 try
                 {
-                    double result = await DoLongRunningWithProgressReporting(steps, new Progress<long>(totalSteps =>
+                    double result = await DoLongRunningWithProgressReporting(steps, new Progress<long>(totalSteps => // await the result AND continue executing this method
                     {
                         lblSteps.Text = "Total steps: " + totalSteps.ToString();
                     }));
