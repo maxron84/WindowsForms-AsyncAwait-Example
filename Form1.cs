@@ -78,8 +78,8 @@ namespace WinForms_AsyncOps_Example
         /// This guy does the actual work (non atomic method).
         /// Progress is being reported to control. The reporting procedure is not perfect, but it works.
         /// </summary>
-        /// <param name="steps"></param>
-        /// <param name="progress"></param>
+        /// <param name="steps">How many steps do you want to run, determined by Textbox input (Standard: 100)</param>
+        /// <param name="progress">The Progress object asking for reports to display progress to the user</param>
         /// <returns>The total value after LongRunningTask ist finished. </returns>
         private Task<double> DoLongRunningWithProgressReporting(long steps, IProgress<long> progress)
         {
