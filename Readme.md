@@ -1,4 +1,5 @@
-﻿# Asynchronous operations in C# - Simple example with Windows Forms
+﻿#Asynchronous operations in C#
+ ##Simple example with Windows Forms
 This example is meant for educational purposes, description is to be found in source code comments in file Form1.cs
 
 To view the Form1-Class in the ClassDiagram1.cd file in Visual Studio you need an extension which, for whatever reason, is not included in standard installations (at least in VS 2019).
