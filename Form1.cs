@@ -27,7 +27,7 @@ namespace WinForms_AsyncOps_Example
         /// </summary>
         /// <param name="sender">The Button</param>
         /// <param name="e">Standard EventArgs, nothing to worry about</param>
-        private void Button1_Click(object sender, EventArgs e) => _ = LongRunningAsync(); // Call and discard the Longrunner
+        private void Button1_Click(object sender, EventArgs e) => _ = LongRunningAsync(); // Call and discard the Longrunner Task
 
         /// <summary>
         /// Executes the LongRunning Task in an asynchronous manner and manipulates the Controls of the Form (non atomic method).
