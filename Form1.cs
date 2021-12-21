@@ -52,7 +52,7 @@ namespace WinForms_AsyncOps_Example
 
                 try
                 {
-                    double result = await DoLongRunningWithProgressReporting(steps, new Progress<long>(totalSteps => // await the result AND continue executing this method
+                    double result = await DoLongRunningWithProgressReporting(steps, new Progress<long>(totalSteps => // await the result asynchronously so app isn't blocked
                     {
                         lblSteps.Text = "Total steps: " + totalSteps.ToString();
                     }));
