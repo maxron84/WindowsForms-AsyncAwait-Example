@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
-/// .NET Framework 4.7.2 (Legacy but should run fine on any Windowsmachine)
+/// .NET Framework 4.7.2 (Legacy but should run fine on any modern Windowsmachine)
 /// C# WinForms Application to demonstrate approach for keeping the Frontend responsive while executing longterm'ish stuff in the background.
 /// The background stuff reports it's progress to be visible to the user. I tried to keep the example as simple as possible.
 /// </summary>
@@ -41,7 +41,7 @@ namespace WinForms_AsyncOps_Example
         /// <returns>A Task which is OK to be just discarded in the calling method as long as everything runs fine.</returns>
         private async Task LongRunningAsync()
         {
-            if (Regex.IsMatch(txtInput.Text, @"^[0-9]+$"))
+            if (Regex.IsMatch(txtInput.Text, @"^[0-9]+$")) // Check if input is only digits using Regular Expression
             {
                 btnGo.Enabled = false;
                 txtInput.Enabled = false;
@@ -91,9 +91,8 @@ namespace WinForms_AsyncOps_Example
                 {
                     total++;
 
-                    // Statusrückgabe nach jedem Schritt, reaktiv bleibt die Anwendung jedoch in diesem Falle nur mit...
                     // Statusreport for every step, the application will block while running...
-                    Thread.Sleep(1); // ...künstlicher Ausbremsung der CPU-Leistung // ... if you don't put sleep intervalls for every step...
+                    Thread.Sleep(1); //...if you don't put sleep intervalls to every step.
                     if (progress != null)
                         progress.Report(i);
                 }
