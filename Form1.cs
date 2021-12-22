@@ -17,6 +17,12 @@ namespace WinForms_AsyncOps_Example
     public partial class Form1 : Form
     {
         /// <summary>
+        /// Maximum length of digits for the textbox user input field, will be used more than once in the code, so we save it
+        /// in a field to avoid repeating ourselves...!
+        /// </summary>
+        private const int maxDigits = 4;
+
+        /// <summary>
         /// Constructor of this Class loading WinForms Designer Support
         /// </summary>
         public Form1() => InitializeComponent();
@@ -35,9 +41,14 @@ namespace WinForms_AsyncOps_Example
         /// <returns>A Task which is OK to be just discarded in the calling method as long as everything runs fine.</returns>
         private async Task LongRunningAsync() // Marked async to tell the compiler we are awaiting something in this method
         {
-            if (Regex.IsMatch(txtInput.Text, @"^[0-9]+$")) // Check if input is only digits using Regular Expression
+            // Invertcheck if input is only digits using Regular Expression + not larger than 4 digits to avoid computing unnecessary long inputs
+            if (!Regex.IsMatch(txtInput.Text, @"^[0-9]+$") || txtInput.Text.Length > maxDigits)
             {
-                btnGo.Enabled = false;
+                lblStatus.Text = $"Inputs accepts a maximum of { maxDigits } digits!";
+            }
+            else
+            {
+                btnRun.Enabled = false;
                 txtInput.Enabled = false;
 
                 long steps = long.Parse(txtInput.Text);
@@ -47,10 +58,11 @@ namespace WinForms_AsyncOps_Example
                 try
                 {
                     // await the result asynchronously so app isn't blocked
-                    double result = await DoLongRunningWithProgressReporting(steps, new Progress<long>(totalSteps =>
-                    {
-                        lblSteps.Text = "Total steps: " + totalSteps.ToString();
-                    }));
+                    double result = await DoLongRunningWithProgressReporting(steps,
+                                            new Progress<long>(totalSteps =>
+                                            {
+                                                lblSteps.Text = "Total steps: " + totalSteps.ToString();
+                                            }));
                 }
                 catch (Exception ex)
                 {
@@ -58,14 +70,9 @@ namespace WinForms_AsyncOps_Example
                 }
 
                 lblStatus.Text = "Run done!";
-                btnGo.Text = "Dewit again";
 
-                btnGo.Enabled = true;
+                btnRun.Enabled = true;
                 txtInput.Enabled = true;
-            }
-            else
-            {
-                lblStatus.Text = "Check your input!";
             }
         }
 

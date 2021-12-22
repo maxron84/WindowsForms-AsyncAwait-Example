@@ -30,44 +30,44 @@ namespace WinForms_AsyncOps_Example
         private void InitializeComponent()
         {
             this.lblStatus = new System.Windows.Forms.Label();
-            this.btnGo = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.lblSteps = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(13, 13);
-            this.lblStatus.Name = "label1";
+            this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(52, 13);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Waiting...";
             // 
-            // button1
+            // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(13, 30);
-            this.btnGo.Name = "button1";
-            this.btnGo.Size = new System.Drawing.Size(75, 23);
-            this.btnGo.TabIndex = 1;
-            this.btnGo.Text = "Dewit";
-            this.btnGo.UseVisualStyleBackColor = true;
-            this.btnGo.Click += new System.EventHandler(this.Button1_Click);
+            this.btnRun.Location = new System.Drawing.Point(13, 30);
+            this.btnRun.Name = "btnGo";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 1;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // textBox1
+            // txtInput
             // 
             this.txtInput.Location = new System.Drawing.Point(13, 60);
-            this.txtInput.Name = "textBox1";
+            this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(100, 20);
             this.txtInput.TabIndex = 2;
             this.txtInput.Text = "100";
             // 
-            // label2
+            // lblSteps
             // 
             this.lblSteps.AutoSize = true;
             this.lblSteps.Location = new System.Drawing.Point(13, 87);
-            this.lblSteps.Name = "label2";
+            this.lblSteps.Name = "lblSteps";
             this.lblSteps.Size = new System.Drawing.Size(62, 13);
             this.lblSteps.TabIndex = 3;
             this.lblSteps.Text = "Total steps:";
@@ -89,7 +89,7 @@ namespace WinForms_AsyncOps_Example
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblSteps);
             this.Controls.Add(this.txtInput);
-            this.Controls.Add(this.btnGo);
+            this.Controls.Add(this.btnRun);
             this.Controls.Add(this.lblStatus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(369, 227);
@@ -104,7 +104,7 @@ namespace WinForms_AsyncOps_Example
         #endregion
 
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Label lblSteps;
         private System.Windows.Forms.Label label3;
