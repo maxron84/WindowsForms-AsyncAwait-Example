@@ -36,7 +36,8 @@ namespace WinForms_AsyncOps_Example
         private void Button1_Click(object sender, EventArgs e) => _ = LongRunningAsync(); // Call and discard the Longrunner Task
 
         /// <summary>
-        /// Executes the LongRunning Task in an asynchronous manner and manipulates the Controls of the Form (non atomic method).
+        /// Executes the LongRunning Task in an asynchronous manner and manipulates the Controls of the Form.
+        /// This method is not atomic.
         /// </summary>
         /// <returns>A Task which is OK to be just discarded in the calling method as long as everything runs fine.</returns>
         private async Task LongRunningAsync() // Marked async to tell the compiler we are awaiting something in this method
@@ -77,8 +78,10 @@ namespace WinForms_AsyncOps_Example
         }
 
         /// <summary>
-        /// This guy does the actual work (non atomic method).
-        /// Progress is being reported to control. The reporting procedure is not perfect, but it works.
+        /// This guy does the actual work.
+        /// Progress is being reported to control. Statusreport: The application will block while running if you don't put sleep intervall to every step.
+        /// The reporting procedure is very simple and far from being the perfect way, but the feedback does work.
+        /// This method is not atomic.
         /// </summary>
         /// <param name="steps">How many steps do you want to run, determined by Textbox input (Standard: 100)</param>
         /// <param name="progress">The Progress object asking for reports to display progress to the user</param>
@@ -93,8 +96,7 @@ namespace WinForms_AsyncOps_Example
                 {
                     total++;
 
-                    // Statusreport for every step, the application will block while running...
-                    Thread.Sleep(1); //...if you don't put sleep intervalls to every step.
+                    Thread.Sleep(1);
                     if (progress != null)
                         progress.Report(i);
                 }
