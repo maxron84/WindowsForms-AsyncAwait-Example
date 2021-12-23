@@ -20,7 +20,7 @@ namespace WinForms_AsyncOps_Example
         /// Maximum length of digits for the textbox user input field, will be used more than once in the code, so we save it
         /// in a field to avoid repeating ourselves...!
         /// </summary>
-        private const int maxDigits = 4;
+        private const int MAXDIGITS = 4;
 
         /// <summary>
         /// Constructor of this Class loading WinForms Designer Support
@@ -47,9 +47,9 @@ namespace WinForms_AsyncOps_Example
         /// <returns>A Task which is OK to be just discarded in the calling method as long as everything runs fine.</returns>
         private async Task LongRunningAsync()
         {
-            if (!Regex.IsMatch(txtInput.Text, @"^[0-9]+$") || txtInput.Text.Length > maxDigits)
+            if (!Regex.IsMatch(txtInput.Text, @"^[0-9]+$") || txtInput.Text.Length > MAXDIGITS)
             {
-                lblStatus.Text = $"Inputs accepts a maximum of { maxDigits } digits!";
+                lblStatus.Text = $"Inputs accepts a maximum of { MAXDIGITS } digits!";
             }
             else
             {
